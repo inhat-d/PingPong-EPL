@@ -1,4 +1,4 @@
-# Custom Stack-Based Language Interpreter
+# PingPong-EPL
 
 ## Introduction
 
