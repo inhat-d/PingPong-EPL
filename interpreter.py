@@ -1,3 +1,9 @@
+# Created 18.01.2025
+# By @tiny_mauss
+# Or @inhat-d on GitHub
+# Usage: `python3 interpreter.py [file]`
+
+
 import sys
 
 program_filepath = sys.argv[1]
