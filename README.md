@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains an interpreter for a custom stack-based programming language. The interpreter processes a simple assembly-like language with commands to perform arithmetic operations, manage a stack, handle conditional jumps, and print messages. It is implemented in Python and provides a foundation for experimenting with stack-based virtual machines.
+This repository contains an interpreter for a custom stack-based (esoteric) programming language. The interpreter processes a simple assembly-like language with commands to perform arithmetic operations, manage a stack, handle conditional jumps, and print messages. It is implemented in Python and provides a foundation for experimenting with stack-based virtual machines.
 
 ### Key Features:
 - **Stack Operations**: Push, pop, and perform arithmetic operations directly on a stack.
@@ -19,19 +19,17 @@ Ensure you have Python 3 installed on your system.
 Create a text file containing your program code. For example:
 
 ```
-PUSH 10
-PUSH 20
+READ
+READ
 ADD
-PRINT "Result:"
-POP
-STOP
+PRINT
 ```
 
 ### Running the Interpreter
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd <repository_folder>
+   git clone https://github.com/inhat-d/PingPong-EPL
+   cd PingPong-EPL
    ```
 
 2. Execute the interpreter with your program file:
@@ -50,7 +48,6 @@ STOP
 | `READ`            | Reads a number from the user and pushes it onto the stack.                   |
 | `JUMP.EQ.0 <label>`| Jumps to a label if the top value on the stack is 0.                         |
 | `JUMP.GT.0 <label>`| Jumps to a label if the top value on the stack is greater than 0.            |
-| `<label>:`        | Defines a label for jump instructions.                                        |
 | `STOP`            | Stops program execution.                                                     |
 
 ### Example Program
