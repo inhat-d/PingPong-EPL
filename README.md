@@ -22,7 +22,8 @@ Create a text file containing your program code. For example:
 READ
 READ
 ADD
-PRINT
+PING
+STOP
 ```
 
 ### Running the Interpreter
@@ -40,26 +41,35 @@ PRINT
 ### Supported Instructions
 | **Instruction**  | **Description**                                                                 |
 |-------------------|---------------------------------------------------------------------------------|
-| `PUSH <number>`   | Pushes a number onto the stack.                                                |
-| `POP`             | Removes the top value from the stack.                                         |
+| `PING`            | Prints top stack's number.                                                    |
+| `PONG`            | Pushes a number onto the stack.                                               |
+| `DELETE`          | Removes the top value from the stack.                                         |
 | `ADD`             | Pops two numbers from the stack, adds them, and pushes the result.            |
 | `SUB`             | Pops two numbers from the stack, subtracts them, and pushes the result.       |
-| `PRINT <string>`  | Prints a string literal (enclosed in double quotes).                          |
-| `READ`            | Reads a number from the user and pushes it onto the stack.                   |
+| `PRINT`           | Prints some text.                                                             |
+| `READ`            | Reads a number from the user and pushes it onto the stack.                    |
 | `JUMP.EQ.0 <label>`| Jumps to a label if the top value on the stack is 0.                         |
 | `JUMP.GT.0 <label>`| Jumps to a label if the top value on the stack is greater than 0.            |
-| `STOP`            | Stops program execution.                                                     |
+| `STOP`            | Stops program execution.                                                      |
 
 ### Example Program
 ```assembly
-PUSH 10
-PUSH 5
+READ
+READ
 SUB
-JUMP.EQ.0 end
-PRINT "Not Zero"
-end:
-PRINT "Done"
+JUMP.EQ.0 L1
+PRINT "not equal"
 STOP
+
+L1:
+PRINT "equal"
+STOP
+```
+
+```
+I: 3
+I: 2
+O: not equal
 ```
 
 ### Output for the Example
