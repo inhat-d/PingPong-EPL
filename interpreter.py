@@ -3,6 +3,8 @@
 # Or @inhat-d on GitHub
 # Usage: `python3 interpreter.py [file]`
 
+# PingPong-EPL 
+
 
 import sys
 
@@ -30,7 +32,7 @@ for line in program_lines:
     program.append(opcode)
     token_counter += 1
 
-    if opcode == "PUSH":
+    if opcode == "PONG":
         number = int(parts[1])
         program.append(number)
         token_counter += 1
@@ -72,7 +74,7 @@ while program[pc] != "STOP":
         number = program[pc]
         pc += 1
         stack.push(number)
-    elif opcode == "POP":
+    elif opcode == "DELETE":
         stack.pop()
     elif opcode == "ADD":
         a = stack.pop()
@@ -82,10 +84,11 @@ while program[pc] != "STOP":
         b = stack.pop()
         a = stack.pop()
         stack.push(a - b)
+    elif opcode == "PING":
+        print(stack.top())
     elif opcode == "PRINT":
-        string_literal = program[pc]
+        print(program[pc])
         pc += 1
-        print(string_literal)
     elif opcode == "READ":
         number = float(input())
         stack.push(number)
