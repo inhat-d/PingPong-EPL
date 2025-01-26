@@ -66,6 +66,8 @@ class Stack:
 pc = 0
 stack = Stack(256)
 
+# ALL THE MAGIC HAPPES BELOW:
+
 while program[pc] != "STOP":    #"STOP" - Well... Stops the program
     opcode = program[pc]
     pc += 1
