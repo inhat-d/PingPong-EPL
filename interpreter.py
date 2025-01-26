@@ -5,18 +5,17 @@
 
 # PingPong-EPL 
 
-
 import sys
 
-program_filepath = sys.argv[1]
+program_filepath = sys.argv[1]  #makes this thing: `python3 interpreter.py [file]`
 
 program_lines = []
-with open(program_filepath, "r") as program_file:
+with open(program_filepath, "r") as program_file:   #opens the file
     program_lines = [line.strip() for line in program_file.readlines()]
 
-program = []
-token_counter = 0
-label_tracker = {}
+program = []        #defines
+token_counter = 0   #the
+label_tracker = {}  #variables
 for line in program_lines:
     parts = line.split(" ")
     opcode = parts[0]
@@ -24,14 +23,15 @@ for line in program_lines:
     if opcode == "":
         continue
 
-    if opcode.endswith(":"):
+    if opcode.endswith(":"):  #labels
         label_tracker[opcode[:-1]] = token_counter
         token_counter += 1
         continue
 
-    program.append(opcode)
+    program.append(opcode)  #commands
     token_counter += 1
 
+    #making commands add/move stack
     if opcode == "PONG":
         number = int(parts[1])
         program.append(number)
@@ -66,39 +66,39 @@ class Stack:
 pc = 0
 stack = Stack(256)
 
-while program[pc] != "STOP":
+while program[pc] != "STOP":    #"STOP" - Well... Stops the program
     opcode = program[pc]
     pc += 1
 
-    if opcode == "PUSH":
+    if opcode == "PUSH":    #adds new number to stack
         number = program[pc]
         pc += 1
         stack.push(number)
-    elif opcode == "DELETE":
+    elif opcode == "DELETE":    #deletes top number
         stack.pop()
-    elif opcode == "ADD":
+    elif opcode == "ADD":   #adds top two numbers and pushes to top
         a = stack.pop()
         b = stack.pop()
         stack.push(a + b)
-    elif opcode == "SUB":
+    elif opcode == "SUB":   #subtracts top two numbers and pushes to top
         b = stack.pop()
         a = stack.pop()
         stack.push(a - b)
-    elif opcode == "PING":
+    elif opcode == "PING": #prints top number
         print(stack.top())
-    elif opcode == "PRINT":
+    elif opcode == "PRINT": #prints some text
         print(program[pc])
         pc += 1
-    elif opcode == "READ":
+    elif opcode == "READ": #reads a number
         number = float(input())
         stack.push(number)
-    elif opcode == "JUMP.EQ.0":
+    elif opcode == "JUMP.EQ.0": #if top number is 0, jumps to label
         number = stack.pop()
         if number == 0:
             pc = label_tracker[program[pc]]
         else:
             pc += 1
-    elif opcode == "JUMP.GT.0":
+    elif opcode == "JUMP.GT.0": #if top number is greater than 0, jumps to label
         number = stack.pop()
         if number > 0:
             pc = label_tracker[program[pc]]
